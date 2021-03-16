@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+   <title>Sample</title>
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0" />
+      <style>
+         .hide {
+            display: none im !important;
+         }
+      </style>
+   </head>
+   <body>
+      <div id="questionView"></div>
+      <div id="explanationView"></div>
+      <div id="referenceView"></div>
+      <div id="caseView"></div>
+      <div id="abstractionView"></div>
+      <script>
+            parent.connect_content_to_flutter && parent.connect_content_to_flutter(window)
+            function getViewValue(){
+            var justHtml = document.getElementById('questionView').innerHTML;
+            if(justHtml!=null) {
+               return justHtml;
+            }
+            }
+                  window.addEventListener("message", (message) => {
+                  if (message.data.id === "question") {
+                  document.getElementById('questionView').innerHTML= message.data.msg;
+                  }
+                  if (message.data.id === "reference") {
+                  document.getElementById('referenceView').innerHTML= message.data.msg;
+                  }
+                  if (message.data.id === "explanation") {
+                  document.getElementById('explanationView').innerHTML= message.data.msg;
+                  }
+                  if (message.data.id === "case") {
+                  document.getElementById('caseView').innerHTML= message.data.msg;
+                  } if (message.data.id === "abstract") {
+                  document.getElementById('abstractionView').innerHTML= message.data.msg;
+                  }
+                }) 
+      </script>
+   </body>
+</html>
